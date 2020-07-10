@@ -55,7 +55,9 @@
                                                             <i class="fas fa-rupee-sign"></i> <?= $row2['price']  ?> x
                                                         </td>
                                                         <td>
-                                                            <input type="number" class="form-control p-0 pl-1 price" value="<?= $row['quantity']  ?>" min=1 style="height: 1.5em;" data-price=<?= $row2['price'] ?> data-dest='price<?= $row2['id'] ?>'>
+                                                            <button class="minusPrice btn btn-sm p-0 z-depth-0" data-price=<?= $row2['price'] ?> data-dest='price<?= $row2['id'] ?>' data-src='priceO<?= $row2['id'] ?>'><i class=" fas white-text fa-minus-square fa-2x"></i></button>
+                                                            <input type="number" id='priceO<?= $row2['id'] ?>' class="w-25 price text-center transparent" readonly value="<?= $row['quantity'] ?>">
+                                                            <button class="addPrice btn btn-sm p-0 z-depth-0" data-price=<?= $row2['price'] ?> data-dest='price<?= $row2['id'] ?>' data-src='priceO<?= $row2['id'] ?>'><i class=" fas white-text fa-plus-square fa-2x"></i></button>
                                                         </td>
                                                         <td>
                                                             <i class="fas fa-rupee-sign"></i> <span class='finalPrice' id="price<?= $row2['id'] ?>"><?= $row2['price'] ?></span>
