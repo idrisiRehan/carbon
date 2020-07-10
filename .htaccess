@@ -1,0 +1,8 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule ([A-Za-z-0-9]*)/$ product.php?product=$1 [QSA,L,NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
+ErrorDocument 404 http://igwebtakes.com/carbon/ 
+ErrorDocument 500 http://igwebtakes.com/carbon/ 
