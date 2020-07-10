@@ -76,13 +76,29 @@ $(document.body).on("click", ".removeFromCart", function () {
     }, 600);
   }
 });
-$(document.body).on("click change", ".price", function () {
-  $count = $(this).val();
+$(".minusPrice").click(function () {
+  $source = $(this).data("src");
   $price = parseInt($(this).data("price"));
   $dest = $(this).data("dest");
+  $count = parseInt($("#" + $source).val()) - 1;
+  if ($count > 0) {
+    $("#" + $source).val($count);
+    $("#" + $dest).text($count * $price);
+  }
+
+  cartManager();
+});
+$(".addPrice").click(function () {
+  $source = $(this).data("src");
+  $price = parseInt($(this).data("price"));
+  $dest = $(this).data("dest");
+  $count = parseInt($("#" + $source).val()) + 1;
+
+  $("#" + $source).val($count);
   $("#" + $dest).text($count * $price);
   cartManager();
 });
+$(document.body).on("click change", ".price", function () {});
 
 function toaster($msg) {
   $toastCount++;
@@ -130,7 +146,6 @@ function cartManager() {
   $("#finalCount").text($finalCount);
   $(".finalPrice").each(function () {
     $finalPrice += parseFloat($(this).text());
-    console.log($finalPrice);
   });
   $("#finalPrice").text($finalPrice);
   $gstPRice = ($finalPrice / 100) * 18;
@@ -140,20 +155,3 @@ function cartManager() {
   $finalPRiceWithGST = $finalPRiceWithGST.toFixed(2);
   $("#finalPriceWithGST").text($finalPRiceWithGST);
 }
-// $(document).ready(function () {
-//   window.onscroll = function () {
-//     myFunction();
-//   };
-
-//   var navbar = document.getElementById("navbar");
-//   var sticky = navbar.offsetTop;
-//   // var sticky = 750;
-
-//   function myFunction() {
-//     if (window.pageYOffset >= sticky) {
-//       navbar.classList.add("sticky");
-//     } else {
-//       navbar.classList.remove("sticky");
-//     }
-//   }
-// });
