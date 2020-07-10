@@ -55,7 +55,7 @@ if (isset($_POST['addUser'])) {
         setcookie('id', pass($row['id']), time() + (86400 * 30), "/");
         setcookie('name', $row['name'], time() + (86400 * 30), "/");
         setcookie('email', $row['email'], time() + (86400 * 30), "/");
-        echo "<script>window.location.assign(document.referrer);</script>";
+        echo "<script>sessionStorage.setItem('popUpMessage', 'true');window.location.assign(document.referrer);</script>";
     }
 }
 // print_r($cart);
